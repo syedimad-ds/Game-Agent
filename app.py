@@ -58,8 +58,9 @@ with tab2:
     st.subheader("🎮 Manual Flight Simulation")
     st.write("Test your piloting skills against the AI's efficiency. The physics engine is strictly Newtonian.")
     
-    # --- HYBRID DEPLOYMENT LOGIC ---
-    IS_CLOUD = os.environ.get('STREAMLIT_RUNTIME_ENV') is not None
+    # --- BULLETPROOF HYBRID DEPLOYMENT LOGIC ---
+    # Streamlit Cloud uses Linux. Local Asus TUF uses Windows ('win32').
+    IS_CLOUD = sys.platform.startswith('linux')
     
     if IS_CLOUD:
         st.warning("🌐 **Cloud Environment Detected:** Interactive real-time physics simulations are disabled in the web browser due to hardware/latency constraints.")
@@ -83,16 +84,33 @@ with tab2:
         if st.button("🚀 Launch Flight Simulator"):
             st.session_state.sim_active = True
             
-            # --- ABSOLUTELY CLEAN SUBPROCESS PYGAME CODE ---
+            # --- THE ULTIMATE PYGAME SUBPROCESS CODE ---
             sim_code = """
 import gymnasium as gym
 import pygame
 import numpy as np
 import sys
+import os
 
 def main():
+    # --- WINDOWS 11 TASKBAR ICON OVERRIDE HACK ---
+    # Forces Windows to treat this as a unique app, respecting our custom icon.
+    if sys.platform == 'win32':
+        import ctypes
+        myappid = 'syedimad.lunarlander.simulator.1'
+        try:
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+        except:
+            pass
+
     pygame.init()
     pygame.display.set_caption("Lunar Lander: Manual Override")
+    
+    # Create Custom Proper Icon
+    icon_surf = pygame.Surface((32, 32), pygame.SRCALPHA)
+    pygame.draw.circle(icon_surf, (255, 255, 255), (16, 16), 14)
+    pygame.draw.polygon(icon_surf, (255, 75, 75), [(16, 6), (8, 22), (24, 22)])
+    pygame.display.set_icon(icon_surf)
     
     screen = pygame.display.set_mode((600, 400))
     clock = pygame.time.Clock()
