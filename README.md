@@ -25,7 +25,7 @@ A comprehensive Reinforcement Learning (RL) showcase that trains an autonomous a
 ## 📂 Repository Structure & File Descriptions
 
 ```text
-Lunar-Lander-AI/
+Game-Agent/
 │
 ├── app.py                         # Main Streamlit application with Hybrid Environment Logic
 ├── requirements.txt               # Project dependencies (Streamlit, Stable Baselines3, Gymnasium)
