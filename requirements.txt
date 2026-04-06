@@ -1,3 +1,5 @@
 streamlit
-gymnasium
+swig
+gymnasium[box2d]
 stable-baselines3
+pygame
