@@ -102,8 +102,8 @@ To fully experience the interactive Human vs. AI Simulator (which is safely disa
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/syedimad-ds/Lunar-Lander-AI.git
-cd Lunar-Lander-AI
+git clone https://github.com/syedimad-ds/Game-Agent.git
+cd Game-Agent
 ```
 
 ### 2. Install the required dependencies
