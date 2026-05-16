@@ -1,5 +1,4 @@
 streamlit
-swig
 gymnasium[box2d]
-stable-baselines3
+stable-baselines3>=2.0.0
 pygame
